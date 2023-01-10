@@ -1,0 +1,9 @@
+// Exercício 1 
+
+// a)primeiro criamos o package.json, depois acessamos através do script
+
+// b)
+// const valorTerminal = process.argv[2]
+// const valorTerminal2 = process.argv[3]
+
+// console.log("Olá,",valorTerminal,"! Você tem", valorTerminal2,"anos.")

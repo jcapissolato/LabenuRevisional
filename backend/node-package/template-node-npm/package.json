@@ -1,0 +1,16 @@
+{
+  "name": "template-node-npm",
+  "version": "1.0.0",
+  "description": "Exercício 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "jorge": "clear && node ./index.js",
+    "search": "clear && node ./search.js"
+    
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
