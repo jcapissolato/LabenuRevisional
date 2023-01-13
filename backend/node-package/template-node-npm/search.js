@@ -28,8 +28,16 @@
 
 //Exercício 3
 
-// const listaDeTarefas = []
-// const addTarefa = listaDeTarefas.push(process.argv[2])
+const listaDeTarefas = []
+
+const addTarefa = process.argv[2]
+
+const tarefa = listaDeTarefas.push(addTarefa)
+
+const novaLista = listaDeTarefas.map((addTarefa)=>{
+    return addTarefa
+})
 
 
-// console.log(listaDeTarefas)
+
+console.log("Tarefa adicionada com sucesso!", novaLista)
