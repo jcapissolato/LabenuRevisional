@@ -68,4 +68,4 @@ const regina: person = {
     corFavorita: CoresArcoIris.AMARELO
 }
 
-
+console.log(regina)
