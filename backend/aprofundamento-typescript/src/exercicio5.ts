@@ -16,13 +16,6 @@ const prontuarios: Array<Prontuario> = [
     { nome: "Márcia", idade: 45, dataDaConsulta: "04/05/2021" }
   ]
   
-
-//   function ordenarConsultas(prontuarios: Array<Prontuario>, nomeAlfabetico: string){
-//     return prontuarios.map((prontuario)=>{
-//         prontuario.nome === nomeAlfabetico
-//     })
-//   }
-
 const ordenarPorNome = (prontuarios: Array<Prontuario>): Array<Prontuario> => {
     return prontuarios.sort((a, b) => {
       if (a.nome < b.nome) {
