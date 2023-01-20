@@ -17,8 +17,23 @@ const prontuarios: Array<Prontuario> = [
   ]
   
 
-  function ordenarConsultas(prontuarios: Array<Prontuario>, nomeAlfabetico: string){
-    return prontuarios.map((prontuario)=>{
-        prontuario.nome === nomeAlfabetico
-    })
-  }
+//   function ordenarConsultas(prontuarios: Array<Prontuario>, nomeAlfabetico: string){
+//     return prontuarios.map((prontuario)=>{
+//         prontuario.nome === nomeAlfabetico
+//     })
+//   }
+
+const ordenarPorNome = (prontuarios: Array<Prontuario>): Array<Prontuario> => {
+    return prontuarios.sort((a, b) => {
+      if (a.nome < b.nome) {
+        return -1;
+      }
+      if (a.nome > b.nome) {
+        return 1;
+      }
+      return 0;
+    });
+  };
+  
+  console.log(ordenarPorNome(prontuarios));
+
