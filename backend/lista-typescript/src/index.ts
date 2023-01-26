@@ -10,7 +10,7 @@ function formatBirthdate(name: string, birthdate: string): string {
   return `${name} nasceu em ${day} de ${month} de ${year}.`;
 }
 
-console.log(formatBirthdate("Jorge", "24/04/1992"));
+// console.log(formatBirthdate("Jorge", "24/04/1992"));
 
 //Exercício 2
 
@@ -19,7 +19,7 @@ console.log(formatBirthdate("Jorge", "24/04/1992"));
 function parametroQualquer(qualquer: number | string | boolean | object) {
   return console.log(typeof qualquer);
 }
-console.log(parametroQualquer(20 !== 20));
+// console.log(parametroQualquer(20 !== 20));
 
 //Exercicio 3
 
@@ -57,23 +57,23 @@ function organizarFilmes(
   const filme = { nome, ano, genero, pontos };
   return filme;
 }
-console.log(organizarFilmes("Duna", 2021, GENERO.ACAO, 74));
+// console.log(organizarFilmes("Duna", 2021, GENERO.ACAO, 74));
 
 // O seguinte array traz as pessoas colaboradoras de uma empresa,
 // com seus salários, setores e se trabalham presencialmente ou por home office:
 
 enum SETORES {
-    MARKETING = "marketing",
-    VENDAS = "vendas", 
-    FINANCEIRO = "financeiro"
+  MARKETING = "marketing",
+  VENDAS = "vendas",
+  FINANCEIRO = "financeiro",
 }
 
 type Pessoa = {
-    nome: string,
-    salário: number,
-    setor: string,
-    presencial: boolean
-}
+  nome: string;
+  salário: number;
+  setor: string;
+  presencial: boolean;
+};
 
 // const colaboradores: Pessoa[] = [
 //   { nome: "Marcos", salário: 2500, setor: SETORES , presencial: true },
@@ -85,75 +85,119 @@ type Pessoa = {
 //   { nome: "Paola", salário: 3500, setor: SETORES, presencial: true },
 // ];
 const colaboradores: Pessoa[] = [
-	{ nome: "Davi", salário: 2500, setor: "marketing", presencial: true },
-	{ nome: "Flávio" ,salário: 1500, setor: "vendas", presencial: false},
-	{ nome: "Wilson" ,salário: 2200, setor: "financeiro", presencial: true},
-	{ nome: "Fillipe" ,salário: 2800, setor: "marketing", presencial: false},
-	{ nome: "JV" ,salário: 5500, setor: "financeiro", presencial: true},
-	{ nome: "Victor" ,salário: 4700, setor: "vendas", presencial: true},
-	{ nome: "Pedro" ,salário: 3500, setor: "marketing", presencial: true }
-]
+  { nome: "Davi", salário: 2500, setor: "marketing", presencial: true },
+  { nome: "Flávio", salário: 1500, setor: "vendas", presencial: false },
+  { nome: "Wilson", salário: 2200, setor: "financeiro", presencial: true },
+  { nome: "Fillipe", salário: 2800, setor: "marketing", presencial: false },
+  { nome: "JV", salário: 5500, setor: "financeiro", presencial: true },
+  { nome: "Victor", salário: 4700, setor: "vendas", presencial: true },
+  { nome: "Pedro", salário: 3500, setor: "marketing", presencial: true },
+];
 
-function trabalhoPresencial(colaboradores:Pessoa[]):Pessoa[]{
-   return colaboradores.filter(Pessoa => Pessoa.setor === SETORES.MARKETING && Pessoa.presencial === true)
+function trabalhoPresencial(colaboradores: Pessoa[]): Pessoa[] {
+  return colaboradores.filter(
+    (Pessoa) => Pessoa.setor === SETORES.MARKETING && Pessoa.presencial === true
+  );
 }
 
-console.log(trabalhoPresencial(colaboradores))
+// console.log(trabalhoPresencial(colaboradores));
 
-
-// Considerando o array de usuários abaixo, 
-// crie uma função que receba este array como parâmetro e 
-// retorne uma lista com apenas os emails dos usuários “admin”. 
+// Considerando o array de usuários abaixo,
+// crie uma função que receba este array como parâmetro e
+// retorne uma lista com apenas os emails dos usuários “admin”.
 
 type user = {
-    name: string, 
-    email: string,
-    role: string
-}
+  name: string;
+  email: string;
+  role: string;
+};
 const usuarios: user[] = [
-	{name: "Rogério", email: "roger@email.com", role: "user"},
-	{name: "Ademir", email: "ademir@email.com", role: "admin"},
-	{name: "Aline", email: "aline@email.com", role: "user"},
-	{name: "Jéssica", email: "jessica@email.com", role: "user"},  
-	{name: "Adilson", email: "adilson@email.com", role: "user"},  
-	{name: "Carina", email: "carina@email.com", role: "admin"}      
-] 
+  { name: "Rogério", email: "roger@email.com", role: "user" },
+  { name: "Ademir", email: "ademir@email.com", role: "admin" },
+  { name: "Aline", email: "aline@email.com", role: "user" },
+  { name: "Jéssica", email: "jessica@email.com", role: "user" },
+  { name: "Adilson", email: "adilson@email.com", role: "user" },
+  { name: "Carina", email: "carina@email.com", role: "admin" },
+];
 
-function administrador(usuarios: user[]): string[]{
-    return usuarios.filter(usuario=> usuario.role === "admin").map(usuario => usuario.email)
+function administrador(usuarios: user[]): string[] {
+  return usuarios
+    .filter((usuario) => usuario.role === "admin")
+    .map((usuario) => usuario.email);
 }
 
-console.log(administrador(usuarios))
+// console.log(administrador(usuarios));
 
-// Agora, pediram para você ajudar a fazer uma funcionalidade de um banco digital. 
-// Antes de explicar a sua tarefa, você precisa entender como eles guardam as contas dos clientes. 
-// Basicamente, eles salvam o nome do clientes, o saldo total e 
+// Agora, pediram para você ajudar a fazer uma funcionalidade de um banco digital.
+// Antes de explicar a sua tarefa, você precisa entender como eles guardam as contas dos clientes.
+// Basicamente, eles salvam o nome do clientes, o saldo total e
 // uma lista contendo todas os débitos realizados pelo cliente. Exemplo:
 
 type Clientes = {
-    cliente: string,
-    saldoTotal: number,
-    debitos: number[]
-}
+  cliente: string;
+  saldoTotal: number;
+  debitos: number[];
+};
 
-const contas: Clientes[] =[
-	{ cliente: "João", saldoTotal: 1000, debitos: [100, 200, 300] },
-	{ cliente: "Paula", saldoTotal: 7500, debitos: [200, 1040] },
-	{ cliente: "Pedro", saldoTotal: 10000, debitos: [5140, 6100, 100, 2000] },
-	{ cliente: "Luciano", saldoTotal: 100, debitos: [100, 200, 1700] },
-	{ cliente: "Artur", saldoTotal: 1800, debitos: [200, 300] },
-	{ cliente: "Soter", saldoTotal: 1200, debitos: [] }
-]
+const contas: Clientes[] = [
+  { cliente: "João", saldoTotal: 1000, debitos: [100, 200, 300] },
+  { cliente: "Paula", saldoTotal: 7500, debitos: [200, 1040] },
+  { cliente: "Pedro", saldoTotal: 10000, debitos: [5140, 6100, 100, 2000] },
+  { cliente: "Luciano", saldoTotal: 100, debitos: [100, 200, 1700] },
+  { cliente: "Artur", saldoTotal: 1800, debitos: [200, 300] },
+  { cliente: "Soter", saldoTotal: 1200, debitos: [] },
+];
 
-// Pensando em aumentar seu lucros, o banco quer identificar possíveis clientes precisando de empréstimos. 
-// Dessa forma, a sua tarefa é criar uma função que receba este array como parâmetro, 
+// Pensando em aumentar seu lucros, o banco quer identificar possíveis clientes precisando de empréstimos.
+// Dessa forma, a sua tarefa é criar uma função que receba este array como parâmetro,
 // atualize o saldo total descontando todos os débitos e retorne apenas os clientes com saldo negativo.
 
 function atualizarSaldo(contas: Clientes[]) {
-    contas.forEach((conta) => {
-      conta.saldoTotal -= conta.debitos.reduce((total, debito) => total + debito, 0);
-    });
-    return contas.filter((conta) => conta.saldoTotal < 0);
-  }
-  console.log(atualizarSaldo(contas));
-  
+  contas.forEach((conta) => {
+    conta.saldoTotal -= conta.debitos.reduce(
+      (total, debito) => total + debito,
+      0
+    );
+  });
+  return contas.filter((conta) => conta.saldoTotal < 0);
+}
+// console.log(atualizarSaldo(contas));
+
+// Você acabou de conseguir um emprego em uma importadora e precisa continuar a desenvolver o
+// sistema de organização de estoque da empresa. A pessoa desenvolvedora anterior a você chegou a
+// criar uma função que ajusta os preços para o formato brasileiro, mas não chegou a implementa-la:
+
+// Aproveitando a função já feita, faça uma nova função que receba o `array`de estoque como parâmetro,
+// use a função `ajustaPreco` para corrigir os preços e retorne a lista de estoque ordenada pela
+// quantidade de cada produto.
+
+type Produtos = {
+  nome: string;
+  quantidade: number;
+  valorUnitario: number 
+};
+
+const estoque: Produtos[] = [
+  { nome: "MacMugffin", quantidade: 37, valorUnitario: 51.04 },
+  { nome: "Vassoura voadora", quantidade: 56, valorUnitario: 210.0 },
+  { nome: "Laço da verdade", quantidade: 32, valorUnitario: 571.5 },
+  { nome: "O precioso", quantidade: 1, valorUnitario: 9181.923 },
+  { nome: "Caneta de 250 cores", quantidade: 123, valorUnitario: 17 },
+  { nome: "Plumbus", quantidade: 13, valorUnitario: 140.44 },
+  { nome: "Pokebola", quantidade: 200, valorUnitario: 99.9915 },
+];
+
+const ajustaPreco = (preco: number): string => {
+  const valorAjustado: string = preco.toFixed(2).replace(".", ",");
+  return "R$ " + valorAjustado;
+};
+
+const ordenaEstoque = (estoque: Produtos[]): Produtos[] => {
+  estoque.forEach((produto: Produtos) => {
+    produto.valorUnitario = Number(ajustaPreco(produto.valorUnitario).replace("R$ ", "").replace(",", "."));
+  });
+  estoque.sort((a: Produtos, b: Produtos) => a.quantidade - b.quantidade);
+  return estoque;
+};
+console.log(ajustaPreco(1000000))
+console.log(ordenaEstoque(estoque))
