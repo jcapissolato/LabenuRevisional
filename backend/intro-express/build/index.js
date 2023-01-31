@@ -60,6 +60,27 @@ app.get('/users/posts/:userId', (req, res) => {
     }
     res.json(user.posts);
 });
+app.delete("/users/:userId/posts/:id", (req, res) => {
+    const postId = req.params.id;
+    const userId = parseInt(req.params.userId);
+    const user = users.find(user => user.id === userId);
+    if (!user) {
+        return res.status(404).json({ message: "Usuário não encontrado." });
+    }
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+        const posts = user.posts;
+        for (let j = 0; j < posts.length; j++) {
+            const post = posts[j];
+            if (post.id === postId) {
+                posts.splice(j, 1);
+                res.status(200).send(`A postagem com id ${postId} foi deletada com sucesso.`);
+                return;
+            }
+        }
+    }
+    res.status(404).send(`A postagem com id ${postId} não foi encontrada.`);
+});
 // A criação de posts dentro do array de usuários pode ser útil para manter as informações relacionadas
 // juntas e evitar a necessidade de consultar outra fonte de dados para obter informações sobre o autor
 // de cada post. Além disso, isso pode ser útil para aplicativos que exigem uma lógica de acesso aos
