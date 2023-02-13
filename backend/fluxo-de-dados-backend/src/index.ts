@@ -21,12 +21,30 @@ app.get("/test", (req: Request, res: Response) => {
 
 app.post("/produto", (req: Request, res: Response) => {
   const produto: Produto = req.body;
+  const name = req.body.name as string
+  const price = req.body.price as number
   try {
+    if (!name || !price) {
+      return res.status(400).send({ message: "Insira um nome e um preço válidos." });
+    }
+  
+    if ( typeof name !== "string") {
+      return res.status(400).send({ message: "O nome do produto deve ser uma string." });
+    }
+  
+    if ( typeof price !== "number") {
+      return res.status(400).send({ message: "O preço do produto deve ser um número." });
+    }
+  
+    if (price <= 0) {
+      return res.status(400).send({ message: "O preço do produto deve ser maior que zero." });
+    }
     const novaLista = produtos.push(produto);
     console.log(novaLista);
     res.status(200).send(produtos);
+
   } catch (error) {
-    if (!produto) {
+    if (!produto.name || produto.price) {
       res.status(400).send({ message: "produto não cadastrado" });
     }
   }
@@ -66,17 +84,11 @@ app.delete("/produtos/:id", (req: Request, res: Response) => {
   const id = req.params.id;
   const index = produtos.findIndex((p) => p.id === id);
   try {
-
-    if(id !== id ){
-        res.status(400).send('ocorreu um erro')
+    if (id !== id) {
+      res.status(400).send("ocorreu um erro");
     }
-    
+
     produtos.splice(index, 1);
     res.status(200).send(produtos);
-
-
-  } catch (error) {
-
-    
-  }
+  } catch (error) {}
 });
