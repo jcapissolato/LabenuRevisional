@@ -67,16 +67,38 @@ let users: User[] = [
 
 app.get("/users/:type", (req: Request, res: Response) => {
   let codeError = 400;
-  const type = req.params.type 
+  const type = req.params.type as UserType
   
   try {
-    // if(type === UserType.ADMIN || UserType.NORMAL){
-    //     res.status(codeError).send(users)
-    // }
-    const filterUsers = users.filter((user)=> user.type === type)
+    
+    const filterUsers = users.filter((user)=> user.type === type.toUpperCase())
     res.status(200).send(filterUsers);
   } catch (error) {
     res.status(codeError).send({ message: "lista não encontrada" });
   }
 });
+
+app.get('/users/search', (req:Request, res: Response)=>{
+  let codeError = 400
+  let name = req.query.name
+  const filterName = users.filter((user)=> user.name === name)
+  try {
+    if(!name){
+      res.status(codeError).send({message: 'informe o usuário'})
+    }
+    if (filterName.length > 0) {
+      res.json(filterName[0]);
+    }else{
+      res.status(404).send('Usuário não encontrado');
+    }
+    res.status(200).send(filterName)
+  } catch (error) {
+    const codeError = 404
+    res.status(codeError).send({message: 'usuário não encontrado'})
+  }
+})
+
+app.post('/users',(req:Request, res:Response)=>{
+  
+})
 
