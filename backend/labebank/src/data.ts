@@ -1,7 +1,7 @@
 
 export type Transacoes = {
     valor: number,
-    data: Date,
+    data: Date | string,
     descricao: string
 }
 export type Conta = {
